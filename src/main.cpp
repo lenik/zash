@@ -1,5 +1,5 @@
-#include "zash_driver.hpp"
-#include "zash_interpreter.hpp"
+#include "zash/zash_driver.hpp"
+#include "zash/zash_interpreter.hpp"
 
 #include <cstdio>
 #include <cstdlib>

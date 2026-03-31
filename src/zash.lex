@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "zash_ast.h"
+#include "zash/zash_ast.h"
 #include "zash.tab.h"
 
 static char *zash_dup(const char *s) {

@@ -21,13 +21,24 @@ zash_flex = custom_target(
 )
 
 zash_sources = files(
-    'src/builtins/builtins.cpp',
-    'src/zash_alloc.c',
-    'src/zash_driver.c',
-    'src/zash_interpreter.cpp',
+    'src/zash/builtins/builtins.cpp',
+    'src/zash/zash_alloc.c',
+    'src/zash/zash_driver.c',
+    'src/zash/zash_interpreter.cpp',
 )
 
 zash_lib = library(
+    'zash',
+    zash_sources,
+    zash_bison,
+    zash_flex,
+    include_directories: include_directories('src'),
+    version: meson.project_version(),
+    soversion: meson.project_version().split('.')[0],
+    install: true,
+)
+
+zash_static_lib = static_library(
     'zash',
     zash_sources,
     zash_bison,
@@ -40,6 +51,14 @@ zash_dep = declare_dependency(
     link_with: zash_lib,
     include_directories: include_directories('src'),
 )
+
+zash_static_dep = declare_dependency(
+    link_with: zash_static_lib,
+    include_directories: include_directories('src'),
+)
+
+meson.override_dependency('zash', zash_dep)
+meson.override_dependency('zash-static', zash_static_dep)
 
 executable(
     'zash',
@@ -60,11 +79,20 @@ install_data(
 pkgconfig = import('pkgconfig')
 pkgconfig.generate(
     zash_lib,
-    name: 'omnishell',
-    description: 'omnishell',
+    name: 'zash',
+    description: 'zash',
     version: meson.project_version(),
-    subdirs: 'omnishell',
-    requires: ['bas-c', 'bas-cpp', 'bas-ui', 'boost', 'openssl', 'libcurl'],
+    subdirs: 'zash',
+    requires: [],
+)
+
+pkgconfig.generate(
+    zash_static_lib,
+    name: 'zash-static',
+    description: 'zash-static',
+    version: meson.project_version(),
+    subdirs: 'zash',
+    requires: [],
 )
 
 # ---- Headers for libbas-c package (includedir/bas-c) ----
@@ -89,7 +117,7 @@ endforeach
 
 install_subdir(
     'src',
-    install_dir: get_option('includedir') / 'zash',
+    install_dir: get_option('includedir'),
     exclude_files: other_list,
     strip_directory: true,
 )

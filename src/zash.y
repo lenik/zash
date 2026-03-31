@@ -1,5 +1,5 @@
 %code requires {
-#include "zash_ast.h"
+#include "zash/zash_ast.h"
 }
 
 %{
@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "zash_ast.h"
+#include "zash/zash_ast.h"
 
 void yyerror(const char *msg);
 void zash_yyerror_record(const char *msg);
