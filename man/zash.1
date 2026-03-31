@@ -1,0 +1,55 @@
+.TH ZASH 1 "March 2026" "zash 1.0.0" "User Commands"
+.SH NAME
+zash \- bash\-like interactive shell
+.SH SYNOPSIS
+.B zash
+.RI [ options ]
+.br
+.B zash \-c
+.I command
+.SH DESCRIPTION
+.B zash
+is an interactive shell with a bash\-like grammar: conditionals, pipelines,
+functions,
+.BR alias ,
+and a configurable
+.B PS1
+prompt. Builtins include
+.BR echo ", " cd ", " pwd ", " export ", " alias ", " help ", and others.
+.PP
+With no options and no
+.B \-c
+argument,
+.B zash
+reads commands from standard input. When standard input is a terminal, it
+prints an expanded prompt before each line (see
+.BR PS1 " below)."
+.SH OPTIONS
+.TP
+.BI \-c \ command
+Run
+.I command
+as a single line, then exit with the command's status.
+.TP
+.BR \-h ", " \-\-help
+Print a short usage message and exit successfully.
+.SH ENVIRONMENT
+.TP
+.B PS1
+Prompt string. Supports backslash escapes such as
+.BR \eu ,
+.BR \eh ,
+.BR \ew ,
+.BR \eW ,
+.BR \e$ ,
+and others described in the inline
+.B help
+builtin.
+.SH FILES
+Installed bash\-completion definitions are typically in
+.IR /usr/share/bash\-completion/completions/zash .
+.SH SEE ALSO
+.BR bash (1),
+.BR sh (1)
+.SH AUTHORS
+The zash developers.

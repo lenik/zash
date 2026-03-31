@@ -1,0 +1,25 @@
+Source: zash
+Section: shells
+Priority: optional
+Maintainer: zash packagers <zash@localhost>
+Build-Depends: debhelper-compat (= 13),
+               meson (>= 0.56),
+               ninja-build,
+               pkg-config,
+               bison,
+               flex,
+               g++,
+               libc6-dev
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://example.invalid/zash
+
+Package: zash
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: bash-like shell (pipelines, functions, alias)
+ zash reads commands from stdin or runs a single line with -c. It supports
+ bash-like syntax including pipelines, functions, alias, and PS1 expansion.
+ .
+ This package installs the zash binary, manual page, and bash-completion
+ script.

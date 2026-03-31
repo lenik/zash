@@ -1,0 +1,8 @@
+zash (1.0.0-1) unstable; urgency=medium
+
+  * Initial Debian package: Meson/Ninja build, libzash shared library, zash(1)
+    driver (interactive shell and -c), man page, bash-completion.
+  * Upstream: flex/bison grammar, interpreter with pipelines, functions,
+    alias, PS1 expansion.
+
+ -- Lenik (谢继雷) <lenik@bodz.net>  Tue, 31 Mar 2026 12:00:00 +0000

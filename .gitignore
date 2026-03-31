@@ -1,0 +1,33 @@
+# Debian build artifacts
+debian/.debhelper/
+debian/files
+debian/zash/
+debian/*.debhelper
+debian/*.log
+debian/*.substvars
+debian/*-build-stamp
+
+# Meson / Ninja
+build/
+obj-*/
+
+# Build products
+*.deb
+*.dsc
+*.changes
+*.buildinfo
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+
+# Temporary files
+*.swp
+*~
+.DS_Store
+*.orig
+
+# Editor directories
+.cache/
+.idea/
+.vscode/
+*.sublime-*
